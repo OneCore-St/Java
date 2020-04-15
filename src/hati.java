@@ -1,14 +1,9 @@
-
 import java.awt.*;
 import javax.swing.*;
 import java.io.*;
 import java.util.logging.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-/**
- *
- * @author pc
- */
 public class hati extends javax.swing.JFrame {
 
     private static final long serialVersionUID = 1L;
@@ -357,7 +352,7 @@ public class hati extends javax.swing.JFrame {
             int blockCount = insv.split(qwe).length - 1;
             JOptionPane.showMessageDialog(null, blockCount + " words / symbols in text", "Mentions", JOptionPane.DEFAULT_OPTION);
         } catch (HeadlessException e) {
-//
+
         }
     }
 
