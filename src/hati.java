@@ -357,7 +357,7 @@ public class hati extends javax.swing.JFrame {
             int blockCount = insv.split(qwe).length - 1;
             JOptionPane.showMessageDialog(null, blockCount + " words / symbols in text", "Mentions", JOptionPane.DEFAULT_OPTION);
         } catch (HeadlessException e) {
-
+//
         }
     }
 
