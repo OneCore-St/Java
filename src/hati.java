@@ -1,15 +1,8 @@
-import java.awt.Color;
-import java.awt.Toolkit;
-import javax.swing.JOptionPane;
-import java.io.File;
-import java.io.FileReader;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFileChooser;
+
+import java.awt.*;
+import javax.swing.*;
+import java.io.*;
+import java.util.logging.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -26,34 +19,18 @@ public class hati extends javax.swing.JFrame {
         initComponents();
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("hatti.png")));
         this.setLocationRelativeTo(null);
-        // jCheckBoxMenuItem1.setS
-    } //Старт программы    
+
+    }
 
     String insv;
     String outsv;
-    String inpop;
-    String outpop;
     int er = 0;
 
     String qwe;
     String qwe1; // работа с reclament
     String qwe2;
 
-    String we;
-    String we1; // работа с cut
-    String we2;
-    String nsv;
     String sav;
-
-    int index1;
-    int index2;  // переменные reclament
-    int index3;
-    int index4;
-
-    int dex1;
-    int dex2;
-    int dex3;   // переменные cut
-    int dex4;
 
     String[] rus = {"й", "ц", "у", "к", "е", "н", "г", "ш", "щ", "з", "х", "ъ", "ф", "ы", "в",
         "а", "п", "р", "о", "л", "д", "ж", "э", "я", "ч", "с", "м", "и", "т", "ь", "б", "ю", "ё", "?", "ё", "э"};
@@ -62,7 +39,7 @@ public class hati extends javax.swing.JFrame {
     String[] ruse = {"й?", "ц?", "у?", "к?", "е?", "н?", "г?", "ш?", "щ?", "з?", "х?", "ъ?", "ф?", "ы?", "в?", "а?", "п?",
         "р?", "о?", "л?", "д?", "ж?", "э?", "я?", "ч?", "с?", "м?", "и?", "т?", "ь?", "б?", "ю?", "ё?"};
     String[] user = {"й(,)", "ц(,)", "у(,)", "к(,)", "е(,)", "н(,)", "г(,)", "ш(,)", "щ(,)", "з(,)", "х(,)", "ъ(,)",
-        "ф(,)", "ы(,)", "в(,)", "а(,)", "п(,)", "р(,)", "о(,)", "л(,)", "д(,)", "ж(,)", "э(,)", "я(,)", "ч(,)", "с(,)", 
+        "ф(,)", "ы(,)", "в(,)", "а(,)", "п(,)", "р(,)", "о(,)", "л(,)", "д(,)", "ж(,)", "э(,)", "я(,)", "ч(,)", "с(,)",
         "м(,)", "и(,)", "т(,)", "ь(,)", "б(,)", "ю(,)", "ё(,)"};
     String[] punct = {".", "?", "!", "...", ",", ";", ":", "-"};
 
@@ -340,12 +317,12 @@ public class hati extends javax.swing.JFrame {
         System.gc();
 
         try {
-            index1 = sav.indexOf("<r@");
-            index2 = sav.indexOf("@end>");
+            int index1 = sav.indexOf("<r@");
+            int index2 = sav.indexOf("@end>");
 
             qwe = sav.substring(index1 + 3, index2); //замена
             qwe = qwe.replace("-", " ");
-            index3 = qwe.indexOf(" ");
+            int index3 = qwe.indexOf(" ");
             qwe1 = qwe.substring(0, index3);
             qwe2 = qwe.replace(qwe1, "");
             qwe2 = qwe2.trim();
@@ -372,5 +349,19 @@ public class hati extends javax.swing.JFrame {
             insv = insv.replace("  ", " ");
         } catch (Exception e) {
         }
+        try {
+            int sch = insv.indexOf("~%");
+            int sch1 = insv.indexOf("%~", sch);
+
+            qwe = insv.substring(sch + 2, sch1);
+            int blockCount = insv.split(qwe).length - 1;
+            JOptionPane.showMessageDialog(null, blockCount + " words / symbols in text", "Mentions", JOptionPane.DEFAULT_OPTION);
+        } catch (HeadlessException e) {
+
+        }
+    }
+
+    private void photo() {
+
     }
 }
